@@ -1,0 +1,60 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      args:
+        UID: 1000
+        GID: 1000
+    container_name: colocation_app
+    volumes:
+      - ../src:/var/www
+    working_dir: /var/www
+    depends_on:
+    - db
+    networks:
+    - colocation_net
+
+  web:
+    image: nginx:alpine
+    container_name: colocation_nginx
+    ports: 
+    - "8001:80"
+    volumes:
+    - ../src:/var/www
+    - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+    - app
+    networks:
+    - colocation_net
+
+  db:
+    image: postgres:17
+    container_name: colocation_db
+    environment:
+      POSTGRES_DB: laravel
+      POSTGRES_USER: laravel
+      POSTGRES_PASSWORD: secret
+    volumes:
+    - colocation_pgdata:/var/lib/postgresql/data
+    ports:
+    - "5434:5432"
+    networks:
+    - colocation_net
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: colocation_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+    - "5052:80"
+    depends_on:
+    - db
+    networks:
+    - colocation_net
+
+networks:
+  colocation_net:
+volumes:
+  colocation_pgdata:
