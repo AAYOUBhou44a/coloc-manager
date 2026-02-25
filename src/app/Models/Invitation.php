@@ -14,4 +14,5 @@ class Invitation extends Model
         'status',
         'colocation_id'
     ];
+
 }

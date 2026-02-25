@@ -4,20 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Expense extends Model
+class Settlement extends Model
 {
     protected $fillable = [
-        'title',
-        'amount',
-        'category_id',
         'payer_id',
-        'colocation_id'
+        'payee_id',
+        'settlement',
+        'colocation_id',
+        'status'
     ];
 
     protected function casts(): array
     {
-        return[
-            'amount' => 'float'
+        return [
+            'settlement' => 'float'
         ];
     }
 }
