@@ -23,7 +23,7 @@ class LoginRequest extends FormRequest
     {
         return [
             'email' => 'required|email|exists:users,email',
-            'password' => 'required|min:3'
+            'password' => 'required|string|between:3,255'
         ];
     }
 
@@ -31,7 +31,12 @@ class LoginRequest extends FormRequest
     {
         return 
         [
-
-        ]
+        'email.required' => 'Votre adresse email est nécessaire pour vous connecter.',
+        'email.email'    => 'Le format de l’email n’est pas valide.',
+        'email.exists'   => 'Ce compte n’existe pas encore dans notre base.',
+        
+        'password.required' => 'Le mot de passe est obligatoire.',
+        'password.between'  => 'Le mot de passe doit faire entre 3 et 255 caractères.',
+        ];
     }
 }
