@@ -18,7 +18,7 @@ return new class extends Migration
             $table->decimal('amount', 8, 2);
             $table->foreignId('category_id')->nullable()->constrained()->onDelete('set null');
             // Laravel suit la convention de nommage anglaise, donc category et pas categorie 
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('payer_id')->constrained('users');
             $table->foreignId('colocation_id')->constrained()->onDelete('cascade');
         });
     }
