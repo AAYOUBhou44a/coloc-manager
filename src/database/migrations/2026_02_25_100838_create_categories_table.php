@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('name');
+            $table->foreignId('colocation_id')->constrained()->onDelete('cascade');
+            // on utilise un tableau [] pour coupler les colonnes
+            $table->unique(['name', 'colocation_id']);
         });
     }
 
