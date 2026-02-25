@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'global_role',
+        'reputation_score',
+        'banned_at'
     ];
 
     /**
@@ -43,6 +46,10 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'reputation_score' => 'decimal:2', //2 décimales après la virgule
+            'banned_at' => 'datetime'
         ];
     }
+
+ 
 }

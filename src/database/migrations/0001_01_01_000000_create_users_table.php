@@ -17,9 +17,13 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('global_role', ['user', 'admin']);
+            $table->decimal('reputation_score')->default(0);
+            $table->dateTime('banned_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
+        // On utilise dateTime pour des événements spécifiques qui ne sont pas liés à la création de la ligne (pas comme timestamps) 
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
