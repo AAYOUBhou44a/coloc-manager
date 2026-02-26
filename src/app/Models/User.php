@@ -51,5 +51,10 @@ class User extends Authenticatable
         ];
     }
 
- 
+    // On utilise belongsToMany car les données (role, balance) sont dans la table pivot
+    public function colocation(){
+        return $this->belongsToMany(Colocation::class, 'colocation_user')
+        ->withPivot('role','balance','left_at')
+        ->withTimestamps();
+    }
 }

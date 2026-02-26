@@ -24,7 +24,7 @@
 
                 <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
                     @auth
-                        <a href="#" class="px-8 py-4 bg-[#111827] text-white rounded-2xl font-black text-lg shadow-2xl hover:bg-[#064e3b] transition-all transform hover:-translate-y-1">
+                        <a href="{{ route('colocation.show') . Auth::id() }}" class="px-8 py-4 bg-[#111827] text-white rounded-2xl font-black text-lg shadow-2xl hover:bg-[#064e3b] transition-all transform hover:-translate-y-1">
                             Accéder à ma coloc
                         </a>
                     @else
@@ -55,7 +55,7 @@
                     <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=1000" 
                          alt="Colocation moderne" 
                          class="rounded-[2.5rem] object-cover h-[500px] w-full">
-                    
+                    @auth
                     <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-3xl shadow-xl border border-gray-50 hidden md:block animate-bounce-slow">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
@@ -67,6 +67,7 @@
                             </div>
                         </div>
                     </div>
+                    @endauth
                 </div>
             </div>
 

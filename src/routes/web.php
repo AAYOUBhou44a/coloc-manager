@@ -33,3 +33,9 @@ Route::get('/colocation/create', function(){
 })->name('colocation.create');
 
 Route::post('colocation', [ColocationController::class, 'store'])->name('colocation.store');
+
+Route::get('/show', function(){
+    return view('colocation.show');
+});
+
+// Route::get('/show/{id}', [ColocationController::class, 'show'])->name('colocation.show');
