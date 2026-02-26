@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ColocationController;
 use Illuminate\Support\Facades\Route;
 
 // *** Authentification ***
@@ -30,3 +31,5 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/colocation/create', function(){
     return view('colocation.create');
 })->name('colocation.create');
+
+Route::post('colocation', [ColocationController::class, 'store'])->name('colocation.store');

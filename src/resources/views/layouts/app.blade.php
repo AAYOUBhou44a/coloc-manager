@@ -33,7 +33,7 @@
             <div class="hidden md:flex space-x-8 font-bold text-xs uppercase tracking-widest text-gray-500">
                 @auth
                     <a href="{{ route('home') }}" class="hover:text-[#064e3b] transition">Tableau de bord</a>
-                    <a href="#" class="text-[#f59e0b] hover:underline transition">+ Créer une Coloc</a>
+                    <a href="{{ route('colocation.create') }}" class="text-[#f59e0b] hover:underline transition">+ Créer une Coloc</a>
                     
                     @if(Auth::user()->global_role === 'admin')
                         <a href="#" class="text-red-600 hover:text-[#064e3b] transition">Admin Global</a>

@@ -13,7 +13,7 @@
     </div>
 
     <div class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 p-10">
-        <form action="#" method="POST" class="space-y-8">
+        <form action="{{ route('colocation.store') }}" method="POST" class="space-y-8">
             @csrf
 
             <div>
