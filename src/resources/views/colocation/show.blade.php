@@ -60,6 +60,53 @@
                 </div>
             </div>
 
+
+
+           <div class="bg-white rounded-[2.5rem] p-7 shadow-sm border border-gray-50">
+                <h2 class="text-xs font-black text-gray-400 uppercase tracking-[0.2em] mb-6">Gestion des Catégories</h2>
+
+                <form action="{{ route('category.store') }}" method="POST" class="mb-6">
+                    @csrf
+                    <div class="relative flex items-center">
+                        <input type="text" 
+                            name="name" 
+                            placeholder="Nom de la catégorie..." 
+                            class="w-full bg-gray-50 border-none rounded-xl py-3 px-4 text-xs font-bold focus:ring-2 focus:ring-[#064e3b] outline-none transition-all"
+                            required>
+                            <button type="submit" class="absolute right-2 p-2 bg-[#064e3b] text-white rounded-lg hover:bg-[#111827] transition shadow-md">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4" />
+                                </svg>
+                            </button>
+                        </div>
+                        @error('name')
+                            <p class="text-red-500 text-xs mt-2 font-bold">{{ $message }}</p>
+                        @enderror
+                        @error('colocation_id')
+                            <p class="text-red-500 text-xs mt-2 font-bold">{{ $message }}</p>
+                        @enderror
+                </form>
+
+                <div class="flex flex-wrap gap-2">
+                    @foreach(['Alimentation', 'Services', 'Transport', 'Hygiène'] as $cat)
+                        <div class="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-xl border border-gray-100 group hover:border-red-100 hover:bg-red-50 transition-all cursor-default">
+                            <span class="text-[9px] font-black text-gray-600 uppercase group-hover:text-red-600">{{ $cat }}</span>
+                            <form action="#" method="POST" class="inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="hidden group-hover:flex items-center justify-center w-4 h-4 bg-red-500 text-white rounded-full text-[10px] shadow-sm">
+                                    ×
+                                </button>
+                            </form>
+                        </div>
+                    @endforeach
+                </div>
+
+                <p class="mt-4 text-[9px] font-bold text-gray-300 uppercase italic">Cliquez sur × pour supprimer</p>
+            </div>
+
+
+
             <div class="bg-[#111827] rounded-[2.5rem] p-7 text-white shadow-2xl">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-xs font-black text-gray-400 uppercase tracking-[0.2em]">Remboursements</h2>

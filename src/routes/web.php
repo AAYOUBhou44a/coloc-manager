@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ColocationController;
+use App\Http\Controllers\InvitationController;
 use Illuminate\Support\Facades\Route;
 
 // *** Authentification ***
@@ -34,8 +36,22 @@ Route::get('/colocation/create', function(){
 
 Route::post('colocation', [ColocationController::class, 'store'])->name('colocation.store');
 
-Route::get('/show', function(){
-    return view('colocation.show');
+Route::get('/colocation', [ColocationController::class, 'show'])->name('colocation.show');
+
+//__Invitation__
+Route::get('/respond', function(){
+    return view('invitations.respond');
 });
 
-// Route::get('/show/{id}', [ColocationController::class, 'show'])->name('colocation.show');
+Route::get('/send', function(){
+    return view('invitations.send');
+});
+
+Route::post('/invitation', [InvitationController::class, 'store']);
+
+Route::get('/email', function(){
+    return view('emails.invite');
+});
+
+// __Category__
+Route::post('/categories', [CategoryController::class, 'store'])->name('category.store');

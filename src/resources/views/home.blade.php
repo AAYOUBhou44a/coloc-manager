@@ -24,7 +24,7 @@
 
                 <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
                     @auth
-                        <a href="{{ route('colocation.show') . Auth::id() }}" class="px-8 py-4 bg-[#111827] text-white rounded-2xl font-black text-lg shadow-2xl hover:bg-[#064e3b] transition-all transform hover:-translate-y-1">
+                        <a href="{{ route('colocation.show') }}" class="px-8 py-4 bg-[#111827] text-white rounded-2xl font-black text-lg shadow-2xl hover:bg-[#064e3b] transition-all transform hover:-translate-y-1">
                             Accéder à ma coloc
                         </a>
                     @else

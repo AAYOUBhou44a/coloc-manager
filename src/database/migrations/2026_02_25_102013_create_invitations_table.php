@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('token')->unique();
             $table->enum('status', ['sent', 'accepted', 'refused'])->default('sent');
             $table->foreignId('colocation_id')->constrained()->onDelete('cascade');
-        });
+            });
+            // expires_at 
     }
 
     /**
