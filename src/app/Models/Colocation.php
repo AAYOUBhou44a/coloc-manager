@@ -19,4 +19,20 @@ class Colocation extends Model
         ->withTimestamps();
     }
 
+    public function categories(){
+        return $this->hasMany(Category::class);
+    }
+
+    public function invitations(){
+        return $this->hasMany(Invitation::class);
+    }
+
+    public function expenses(){
+        return $this->hasMany(Expense::class);
+    }
+
+    public function settlements(){
+        return $this->hasMany(Settlement::class);
+    }
+
 }

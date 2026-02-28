@@ -30,7 +30,7 @@
             Accepter l'invitation
         </a>
 
-        <a href="https://votre-site.com/invitation/reject/fake-token" 
+        <a href="{{route('invitations.reject', $token)}}" 
            style="display: inline-block; background-color: #f3f4f6; color: #374151 !important; padding: 15px 25px; text-decoration: none; border-radius: 8px; font-weight: bold; border: 1px solid #d1d5db;">
             Refuser
         </a>

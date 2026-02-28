@@ -20,4 +20,12 @@ class Settlement extends Model
             'settlement' => 'float'
         ];
     }
+
+    public function user(){
+        return $this->belongsTo(Settlement::class);
+    }
+
+    public function colocation(){
+        return $this->belongsTo(Colocation::class);
+    }
 }

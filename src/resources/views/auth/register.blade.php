@@ -33,6 +33,9 @@
 
             <form method="POST" action="{{route('register.store')}}" class="space-y-5">
                 @csrf
+                @if(request()->route('token'))
+                    <input type="hidden" name="token" value="{{ request()->route('token') }}">
+                @endif
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div class="md:col-span-2">
                         <label for="name" class="block text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-2">Nom Complet</label>

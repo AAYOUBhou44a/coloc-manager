@@ -20,4 +20,12 @@ class Expense extends Model
             'amount' => 'float'
         ];
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function colocation(){
+        return $this->belongsTo(Colocation::class);
+    }
 }

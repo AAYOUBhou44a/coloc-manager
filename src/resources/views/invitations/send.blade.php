@@ -22,7 +22,7 @@
         
         <div class="lg:col-span-7">
             <div class="bg-[#111827] rounded-[2.5rem] p-10 text-white shadow-2xl relative overflow-hidden">
-                <form action="{{ route('store') }}" method="POST">
+                <form action="{{ route('invitations.store') }}" method="POST">
                     @csrf
                     
                     <div class="mb-8">
@@ -38,6 +38,15 @@
                         @error('email')
                             <p class="text-red-400 text-xs mt-2 font-bold">{{ $message }}</p>
                         @enderror
+                        @if ($errors->any())
+                            <div style="background-color: #fee2e2; border: 1px solid #ef4444; color: #b91c1c; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                                <ul style="margin: 0; padding-left: 20px;">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     </div>
 
                     <button type="submit" class="w-full py-5 bg-[#f59e0b] text-black rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl hover:bg-white transition-all transform hover:-translate-y-1">

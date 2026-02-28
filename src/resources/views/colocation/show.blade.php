@@ -14,7 +14,7 @@
             </h1>
         </div>
         <div class="flex gap-3">
-            <button class="px-5 py-3 bg-white border border-gray-200 rounded-xl font-bold text-xs uppercase tracking-widest hover:shadow-md transition">Invite Link 🔗</button>
+            <a href="{{ route('invitations.send') }}" class="px-5 py-3 bg-white border border-gray-200 rounded-xl font-bold text-xs uppercase tracking-widest hover:shadow-md transition">Invite 🔗</a>
             <button class="px-5 py-3 bg-red-50 text-red-600 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-red-600 hover:text-white transition">Dissoudre</button>
         </div>
     </div>

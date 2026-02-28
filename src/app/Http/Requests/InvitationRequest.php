@@ -22,12 +22,13 @@ class InvitationRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
 
-    protected function prepareForValidatin(){
+    protected function prepareForValidation(){
         $this->merge([
             'owner_id' => Auth::id(),
             'user_id' => null,
             'token' => Str::random(40),
-            'colocation_id' => auth()->user()->colocation->id
+            // Puisque tu utilises belongsToMany, Laravel renvoie une Collection d'objets Colocation,
+            'colocation_id' => auth()->user()->colocation->first()->id
         ]);
     }
     public function rules(): array

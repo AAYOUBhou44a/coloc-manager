@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Models\Invitation;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -37,12 +38,15 @@ class InviteMemberMail extends Mailable
      */
     public function content(): Content
     {
+        // $emailExists = User::where('email', $this->invitation->email)->exists();
+        // $emailExists ? 'login' : 
         return new Content(
             view: 'emails.invite',
             with:[
                 'url' => route('register', $this->invitation->token),
                 'owner' => auth()->user()->name,
-                'colocation' => $this->invitation->colocation->name
+                'colocation' => $this->invitation->colocation->name,
+                'token' => $this->invitation->token
             ]
         );
     }
