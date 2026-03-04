@@ -36,7 +36,7 @@
                     <a href="{{ route('colocation.create') }}" class="text-[#f59e0b] hover:underline transition">+ Créer une Coloc</a>
                     
                     @if(Auth::user()->global_role === 'admin')
-                        <a href="#" class="text-red-600 hover:text-[#064e3b] transition">Admin Global</a>
+                        <a href="{{ route('admin.dashboard') }}" class="text-red-600 hover:text-[#064e3b] transition">Admin Global</a>
                     @endif
                 @else
                     <a href="#" class="hover:text-[#064e3b] transition">Fonctionnement</a>

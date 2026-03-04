@@ -14,4 +14,5 @@ class Category extends Model
     public function colocation(){
         return $this->belongsTo(Colocation::class);
     }
+
 }

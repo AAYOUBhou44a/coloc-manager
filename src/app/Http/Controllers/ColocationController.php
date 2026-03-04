@@ -21,16 +21,19 @@ class ColocationController extends Controller
         return $colocation ? redirect()->route('colocation.show', Auth::id()) : back();
     }
 
-    public function show(){
-        $user = Auth::user();
-        $colocation = $user->colocation()
+    public function show() {
+    $user = Auth::user();
+    
+    // On récupère la colocation active avec toutes les relations nécessaires
+    $colocation = $user->colocation()
         ->wherePivot('left_at', null)
-        ->with('users') //Eager loading
+        ->with(['users', 'categories', 'expenses.category', 'expenses.user']) 
         ->first();
 
-        if(!$colocation){
-            return redirect()->route('home')->with('error','vous n\'avez pas de colocation, essayer de créer une');
-        }
-        return view('colocation.show', compact('colocation'));
+    if (!$colocation) {
+        return redirect()->route('home')->with('error', 'Vous n\'avez pas de colocation, essayez d\'en créer une.');
     }
+
+    return view('colocation.show', compact('colocation'));
+}
 }
